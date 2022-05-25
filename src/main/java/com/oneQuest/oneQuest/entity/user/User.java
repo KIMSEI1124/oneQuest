@@ -86,7 +86,7 @@ public class User {
     /**
      * <p> Create Date : [ 2022 - 05 - 25 ]</p>
      * <p> Update Date : [ 2022 - 05 - 25 ]</p>
-     * <p>유저의 회원 가입</p>
+     * <p>유저의 회원 가입 생성자</p>
      */
     @Builder
     public User(String id, String password, String email, String name, String phone_number, Provider provider,
