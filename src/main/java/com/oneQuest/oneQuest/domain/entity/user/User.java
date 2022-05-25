@@ -1,7 +1,7 @@
-package com.oneQuest.oneQuest.entity.user;
+package com.oneQuest.oneQuest.domain.entity.user;
 
-import com.oneQuest.oneQuest.entity.enum_type.Provider;
-import com.oneQuest.oneQuest.entity.enum_type.Role;
+import com.oneQuest.oneQuest.domain.entity.enumType.Provider;
+import com.oneQuest.oneQuest.domain.entity.enumType.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

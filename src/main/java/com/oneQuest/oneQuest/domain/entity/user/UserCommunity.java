@@ -1,4 +1,4 @@
-package com.oneQuest.oneQuest.entity.user;
+package com.oneQuest.oneQuest.domain.entity.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
