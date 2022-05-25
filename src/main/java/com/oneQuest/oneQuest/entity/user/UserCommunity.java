@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class User_Community {
+public class UserCommunity {
 
     /**
      * <p>idx ( PK ) : index</p>
