@@ -1,6 +1,6 @@
 package com.oneQuest.oneQuest.repository.userRepository;
 
-import com.oneQuest.oneQuest.domain.entity.user.User;
+import com.oneQuest.oneQuest.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

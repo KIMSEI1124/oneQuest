@@ -19,6 +19,10 @@ UserServiceTest : 생성
 
 ##[ 2022 - 05 - 27 ]  
 
+### Service
+UserService : Email 중복 확인 만드는중  
+
 ### Test
 UserServiceTest : 단위 테스트마다 실행후 DB 초기화 성공  
--> @Transactional 을 붙여주면 됨
+-> @Transactional 을 붙여주면 됨  
+UserTest : DB에 입력되는 값에 대한 테스트중 10 / 13  

@@ -1,7 +1,7 @@
-package com.oneQuest.oneQuest.domain.entity.user;
+package com.oneQuest.oneQuest.domain.user;
 
-import com.oneQuest.oneQuest.domain.entity.enumType.Provider;
-import com.oneQuest.oneQuest.domain.entity.enumType.Role;
+import com.oneQuest.oneQuest.domain.enumType.Provider;
+import com.oneQuest.oneQuest.domain.enumType.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -59,11 +59,12 @@ public class User {
 
     /**
      * <p>[Profile]</p>
-     * <p>nickname : 유저의 별칭</p>
+     * <p>nickname ( NN, UQ ) : 유저의 별칭</p>
      * <p>header : 유저의 소갯말</p>
      * <p>image : 유저의 프로필 이미지</p>
      * <p>role ( NN ) : 유저의 역활</p>
      */
+    @Column(nullable = false, unique = true)
     private String nickname;
     private String header;
     private String image;

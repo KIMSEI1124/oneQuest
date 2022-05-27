@@ -1,6 +1,6 @@
 package com.oneQuest.oneQuest.service.userService;
 
-import com.oneQuest.oneQuest.domain.entity.user.User;
+import com.oneQuest.oneQuest.domain.user.User;
 import com.oneQuest.oneQuest.exception.IdException;
 import com.oneQuest.oneQuest.repository.userRepository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +28,7 @@ public class UserService {
     public Long join(User user) {
         verifyId(user); // Id 형식 확인
         validateDuplicateUser(user);    // 중복 유저 확인
+        validateDuplicateUserEmail(user);   // 중복 이메일 확인
         UR.save(user);
         return user.getIdx();
     }
@@ -43,6 +44,20 @@ public class UserService {
         // 이미 회원이 존재하면
         if (!findUsers.isEmpty()) {
             throw new IdException("이미 존재하는 유저입니다.");
+        }
+    }
+
+    /**
+     * <p>Create Date : [ 2022 - 05 - 27 ]</p>
+     * <p>Last Update Date : [ 2022 - 05 - 27 ]</p>
+     * <p>이메일 중복 방지</p>
+     * @param user 유저의 데이터
+     */
+    private void validateDuplicateUserEmail(User user) {
+        List<User> findUsers = UR.findByIdList(user.getEmail());
+        // 이미 회원이 존재하면
+        if (!findUsers.isEmpty()) {
+            throw new IdException("해당 이메일로 가입된 아이디가 존재합니다..");
         }
     }
 

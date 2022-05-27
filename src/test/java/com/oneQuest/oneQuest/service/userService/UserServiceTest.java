@@ -1,12 +1,11 @@
 package com.oneQuest.oneQuest.service.userService;
 
-import com.oneQuest.oneQuest.domain.entity.enumType.Provider;
-import com.oneQuest.oneQuest.domain.entity.enumType.Role;
-import com.oneQuest.oneQuest.domain.entity.user.User;
+import com.oneQuest.oneQuest.domain.enumType.Provider;
+import com.oneQuest.oneQuest.domain.enumType.Role;
+import com.oneQuest.oneQuest.domain.user.User;
 import com.oneQuest.oneQuest.exception.IdException;
 import com.oneQuest.oneQuest.repository.userRepository.UserRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,6 @@ class UserServiceTest {
      * 유저 회원가입 테스트 [ + ]
      */
     @Test
-    @DisplayName("User_Join_Test")
     public void 유저회원가입() {
         // given
         User user = User.builder()
@@ -67,7 +65,6 @@ class UserServiceTest {
      */
     @Test
     @Transactional
-    @DisplayName("User_Join_IdValidDuplicate_Test")
     public void 유저아이디중복유효성검사() {
         // given
         User user1 = User.builder()
