@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class userService {
+public class UserService {
 
     private final UserRepository UR;
 
@@ -25,11 +25,11 @@ public class userService {
      * @return 유저의 생성 번호
      */
     @Transactional
-    public String join(User user) {
+    public Long join(User user) {
         verifyId(user); // Id 형식 확인
         validateDuplicateUser(user);    // 중복 유저 확인
         UR.save(user);
-        return user.getId();
+        return user.getIdx();
     }
 
     /**
@@ -59,8 +59,9 @@ public class userService {
             throw new IdException("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
         }
         // Id의 문자열을 검사한다. 허용 문자 영어 소문자, 특수기호 [_],(-)
-        if (!saveId.contains("^[a-z[_][-]]")) {
-            throw new IdException("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
-        }
+        //FIXME
+//        if (!saveId.contains("^[a-z]")) {
+//            throw new IdException("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+//        }
     }
 }

@@ -6,11 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>Create Date : [2022 - 05 - 25]</p>
@@ -53,6 +51,7 @@ public class User {
     private String phone_number;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Provider provider;
 
     @Column(nullable = false)
@@ -70,6 +69,7 @@ public class User {
     private String image;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     /**
@@ -86,6 +86,8 @@ public class User {
     /**
      *  [ Relationship ]
      */
+    @OneToMany(mappedBy = "user")
+    private List<UserCommunity> userCommunityList;
 
     /**
      * <p> Create Date : [ 2022 - 05 - 25 ]</p>

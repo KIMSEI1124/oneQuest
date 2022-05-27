@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -17,6 +16,7 @@ public class UserRepository {
      * Create Date : [ 2022 - 05 - 25 ] <p>
      * Last Update Date : [ 2022 - 05 - 25 ] <p>
      * 기능 : 유저의 정보를 저장
+     * @param user
      */
     public Long save(User user) {
         em.persist(user);
@@ -47,6 +47,10 @@ public class UserRepository {
         return em.createQuery("select U from User as U where U.id =: id", User.class)
                 .setParameter("id", id)
                 .getResultList();
+    }
+
+    public User findById(Long idx) {
+        return em.find(User.class, idx);
     }
 }
 

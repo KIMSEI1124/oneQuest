@@ -16,3 +16,9 @@ IdException : 생성
 UserServiceTest : 생성
 
 --- 
+
+##[ 2022 - 05 - 27 ]  
+
+### Test
+UserServiceTest : 단위 테스트마다 실행후 DB 초기화 성공  
+-> @Transactional 을 붙여주면 됨
