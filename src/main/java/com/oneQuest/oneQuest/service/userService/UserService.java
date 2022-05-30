@@ -27,8 +27,8 @@ public class UserService {
     @Transactional
     public Long join(User user) {
         verifyId(user); // Id 형식 확인
-        validateDuplicateUser(user);    // 중복 유저 확인
-        validateDuplicateUserEmail(user);   // 중복 이메일 확인
+        validateDuplicateUserId(user);    // 중복 유저 Id 확인
+        validateDuplicateUserEmail(user);   // 중복 유저 이메일 확인
         UR.save(user);
         return user.getIdx();
     }
@@ -39,7 +39,7 @@ public class UserService {
      * <p>중복 가입 방지</p>
      * @param user 유저의 데이터
      */
-    private void validateDuplicateUser(User user) {
+    private void validateDuplicateUserId(User user) {
         List<User> findUsers = UR.findByIdList(user.getId());
         // 이미 회원이 존재하면
         if (!findUsers.isEmpty()) {
