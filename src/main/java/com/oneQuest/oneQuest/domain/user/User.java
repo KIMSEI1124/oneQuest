@@ -133,4 +133,22 @@ public class User {
     public void removeFollower() {
         this.follower -= 1;
     }
+
+    /**
+     * <p>[Create Date : 2022 - 06 - 01 ]</p>
+     * <p>[Update Date : 2022 - 06 - 01 ]</p>
+     * <p>팔로윙 수를 1 늘린다.</p>
+     */
+    public void addFollowing() {
+        this.following += 1;
+    }
+
+    /**
+     * <p>[Create Date : 2022 - 06 - 01 ]</p>
+     * <p>[Update Date : 2022 - 06 - 01 ]</p>
+     * <p>팔로윙 수를 1 늘린다.</p>
+     */
+    public void removeFollowing() {
+        this.following -= 1;
+    }
 }
