@@ -18,9 +18,9 @@ public class UserRepository  {
      * 기능 : 유저의 정보를 저장
      * @param user
      */
-    public Long save(User user) {
+    public String save(User user) {
         em.persist(user);
-        return user.getIdx();
+        return user.getId();
     }
 
     /**
@@ -49,8 +49,26 @@ public class UserRepository  {
                 .getResultList();
     }
 
-    public User findByIdx(Long idx) {
+    /**
+     * <p>Create Date : [ 2022 - 06 - 01 ] </p>
+     * <p>Update Date : [ 2022 - 06 - 01 ]</p>
+     * User_Idx 로 유저을 찾는다.
+     * @param idx 유저의 PK
+     * @return  유저의 데이터
+     */
+    public User findByIdx(String idx) {
         return em.find(User.class, idx);
+    }
+
+    /**
+     * <p>Create Date : [ 2022 - 06 - 01 ]</p>
+     * <p>Update Date : [ 2022 - 06 - 01 ]</p>
+     * 유저의 Id로 유저를 찾는다.
+     * @param id 유저의 Id
+     * @return User data
+     */
+    public User findById(String id) {
+        return em.find(User.class, id);
     }
 }
 

@@ -52,11 +52,11 @@ class UserServiceTest {
                 .build();
 
         // when
-        Long saveIdx = us.join(user);
+        String saveId = us.join(user);
 
         // then
-        Assertions.assertEquals(user.getId(), ur.findByIdx(saveIdx).getId(),"유저의 Id가 동일해야 합니다.");
-        Assertions.assertEquals(0L, ur.findByIdx(saveIdx).getFollower(), "유저의 팔로워수가 0이여야 합니다.");
+        Assertions.assertEquals(user.getId(), ur.findById(saveId).getId(), "유저의 Id가 동일해야 합니다.");
+        Assertions.assertEquals(0L, ur.findById(saveId).getFollower(), "유저의 팔로워수가 0이여야 합니다.");
     }
 
     /**
@@ -104,6 +104,4 @@ class UserServiceTest {
         // then
         Assertions.fail("예외처리가 되어야 합니다.");
     }
-
-
 }

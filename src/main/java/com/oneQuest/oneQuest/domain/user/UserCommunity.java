@@ -1,5 +1,7 @@
 package com.oneQuest.oneQuest.domain.user;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserCommunity {
 
     /**
@@ -24,15 +26,18 @@ public class UserCommunity {
      */
     @Id
     @GeneratedValue
-    private Long idx;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "follower_user_id")
     private User user;
 
     @Column(nullable = false)
-    private String follower;
-
-    @Column(nullable = false)
     private String following;
+
+    @Builder
+    public UserCommunity(User follower_user, String following_id) {
+        this.user = follower_user;
+        this.following = following_id;
+    }
 }

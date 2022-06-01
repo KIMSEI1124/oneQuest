@@ -11,9 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -203,11 +201,11 @@ class UserTest {
                 .build();
 
         // when
-        Long user1_idx = us.join(user1);
-        System.out.println("user1_email = " + ur.findByIdx(user1_idx).getEmail());
+        String user1_id = us.join(user1);
+        System.out.println("user1_email = " + ur.findByIdx(user1_id).getEmail());
         try {
-            Long user2_idx = us.join(user2);
-            System.out.println("user2_email = " + ur.findByIdx(user2_idx).getEmail());
+            String user2_id = us.join(user2);
+            System.out.println("user2_email = " + ur.findByIdx(user2_id).getEmail());
         } catch (Exception e) {
             return;
         }

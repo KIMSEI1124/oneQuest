@@ -2,6 +2,7 @@ package com.oneQuest.oneQuest.domain.user;
 
 import com.oneQuest.oneQuest.domain.enumType.Provider;
 import com.oneQuest.oneQuest.domain.enumType.Role;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +19,11 @@ import java.util.List;
  */
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
     /**
      * <p>[Auth]</p>
-     * <p>idx ( PK ) : index</p>
-     * <p>id ( NN, UQ ) : 유저의 id</p>
+     * <p>id ( PK ) : 유저의 id</p>
      * <p>password ( NN ) : 유저의 pw</p>
      * <p>email ( NN, UQ ) : 유저의 email</p>
      * <p>name ( NN ) : 유저의 name</p>
@@ -31,10 +31,8 @@ public class User {
      * <p>provider ( NN ) : 유저의 가입경로</p>
      * <p>authentication ( NN ) : 유저의 이메일 인증 유무</p>
      */
-    @Id
-    @GeneratedValue
-    private Long idx;
 
+    @Id
     @Column(name = "user_id", nullable = false, unique = true)
     private String id;
 
@@ -87,7 +85,7 @@ public class User {
     private LocalDateTime delete_data;
 
     /**
-     *  [ Relationship ]
+     * [ Relationship ]
      */
     @OneToMany(mappedBy = "user")
     private List<UserCommunity> userCommunityList;
@@ -121,8 +119,9 @@ public class User {
      * <p>[Update Date : 2022 - 06 - 01 ]</p>
      * <p>팔로워 수를 1 늘린다.</p>
      */
-    public void addFollower() {
+    public Long addFollower() {
         this.follower += 1;
+        return follower;
     }
 
     /**
@@ -130,8 +129,9 @@ public class User {
      * <p>[Update Date : 2022 - 06 - 01 ]</p>
      * <p>팔로워 수를 1 줄인다.</p>
      */
-    public void removeFollower() {
+    public Long removeFollower() {
         this.follower -= 1;
+        return follower;
     }
 
     /**
@@ -139,8 +139,9 @@ public class User {
      * <p>[Update Date : 2022 - 06 - 01 ]</p>
      * <p>팔로윙 수를 1 늘린다.</p>
      */
-    public void addFollowing() {
+    public Long addFollowing() {
         this.following += 1;
+        return following;
     }
 
     /**
@@ -148,10 +149,8 @@ public class User {
      * <p>[Update Date : 2022 - 06 - 01 ]</p>
      * <p>팔로윙 수를 1 줄인다.</p>
      */
-    public void removeFollowing() {
-        if(this.following == 0){
-
-        }
+    public Long removeFollowing() {
         this.following -= 1;
+        return following;
     }
 }

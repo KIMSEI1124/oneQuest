@@ -25,18 +25,19 @@ public class UserService {
      * @return 유저의 생성 번호
      */
     @Transactional
-    public Long join(User user) {
+    public String join(User user) {
         verifyId(user); // Id 형식 확인
-        validateDuplicateUserId(user);    // 중복 유저 Id 확인
+        validateDuplicateUserId(user);      // 중복 유저 Id 확인
         validateDuplicateUserEmail(user);   // 중복 유저 이메일 확인
         UR.save(user);
-        return user.getIdx();
+        return user.getId();
     }
 
     /**
      * <p>Create Date : [ 2022 - 05 - 25 ]</p>
      * <p>Last Update Date : [ 2022 - 05 - 25 ]</p>
      * <p>중복 가입 방지</p>
+     *
      * @param user 유저의 데이터
      */
     private void validateDuplicateUserId(User user) {
@@ -51,6 +52,7 @@ public class UserService {
      * <p>Create Date : [ 2022 - 05 - 27 ]</p>
      * <p>Last Update Date : [ 2022 - 05 - 27 ]</p>
      * <p>이메일 중복 방지</p>
+     *
      * @param user 유저의 데이터
      */
     private void validateDuplicateUserEmail(User user) {
@@ -65,6 +67,7 @@ public class UserService {
      * <p>Create Date : [ 2022 - 05 - 25]</p>
      * <p>Update Date : [ 2022 - 05 - 25]</p>
      * <p>유저의 id 형식에 대한 확인</p>
+     *
      * @param user 유저의 데이터
      */
     private void verifyId(User user) {
