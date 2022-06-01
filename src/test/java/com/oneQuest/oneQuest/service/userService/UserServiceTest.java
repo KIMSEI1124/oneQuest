@@ -32,7 +32,7 @@ class UserServiceTest {
 
     /**
      * Create Date : [ 2022 - 05 - 25 ] <p>
-     * Last Update Date : [ 2022 - 05 - 25 ] <p>
+     * Last Update Date : [ 2022 - 06 - 01 ] <p>
      * 유저 회원가입 테스트 [ + ]
      */
     @Test
@@ -55,7 +55,8 @@ class UserServiceTest {
         Long saveIdx = us.join(user);
 
         // then
-        Assertions.assertEquals(user.getId(), ur.findById(saveIdx).getId());
+        Assertions.assertEquals(user.getId(), ur.findByIdx(saveIdx).getId(),"유저의 Id가 동일해야 합니다.");
+        Assertions.assertEquals(0L, ur.findByIdx(saveIdx).getFollower(), "유저의 팔로워수가 0이여야 합니다.");
     }
 
     /**
@@ -64,7 +65,6 @@ class UserServiceTest {
      * 유저 아이디 중복 유효성 테스트 [ + ]
      */
     @Test
-    @Transactional
     public void 유저아이디중복유효성검사() {
         // given
         User user1 = User.builder()
@@ -104,4 +104,6 @@ class UserServiceTest {
         // then
         Assertions.fail("예외처리가 되어야 합니다.");
     }
+
+
 }

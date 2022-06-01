@@ -49,7 +49,7 @@ public class UserRepository  {
                 .getResultList();
     }
 
-    public User findById(Long idx) {
+    public User findByIdx(Long idx) {
         return em.find(User.class, idx);
     }
 }

@@ -72,9 +72,7 @@ public class User {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
-    @Column(columnDefinition = "Long default 0")
     private Long follower;
-    @Column(columnDefinition = "Long default 0")
     private Long following;
 
     /**
@@ -112,6 +110,8 @@ public class User {
         this.nickname = nickname;
         this.role = role;
         this.create_data = create_data;
+        this.follower = 0L;
+        this.following = 0L;
     }
 
     /* 비즈니스 로직 */
@@ -146,9 +146,12 @@ public class User {
     /**
      * <p>[Create Date : 2022 - 06 - 01 ]</p>
      * <p>[Update Date : 2022 - 06 - 01 ]</p>
-     * <p>팔로윙 수를 1 늘린다.</p>
+     * <p>팔로윙 수를 1 줄인다.</p>
      */
     public void removeFollowing() {
+        if(this.following == 0){
+
+        }
         this.following -= 1;
     }
 }

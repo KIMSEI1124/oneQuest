@@ -57,7 +57,7 @@ public class UserService {
         List<User> findUsers = UR.findByIdList(user.getEmail());
         // 이미 회원이 존재하면
         if (!findUsers.isEmpty()) {
-            throw new IdException("해당 이메일로 가입된 아이디가 존재합니다..");
+            throw new IdException("해당 이메일로 가입된 아이디가 존재합니다.");
         }
     }
 

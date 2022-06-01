@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-@Transactional
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 class UserTest {
@@ -177,35 +177,37 @@ class UserTest {
     public void EmailUniqueTest() {
         // given
         User user1 = User.builder()
-                .id("gildong123")
+                .id("gildong1234")
                 .password("Password1234!")
-                .email("gildong@gmail.com")
+                .email("gildong3@gmail.com")
                 .name("홍길동")
                 .phone_number("010-1234-5678")
                 .provider(Provider.Google)
                 .authentication(false)
-                .nickname("test1")
+                .nickname("test3")
                 .role(Role.USER)
                 .create_data(LocalDateTime.now())
                 .build();
 
         User user2 = User.builder()
-                .id("gildong321")
+                .id("gildong4321")
                 .password("Password1234!")
-                .email("gildong@gmail.com")
+                .email("gildong3@gmail.com")
                 .name("홍길동")
                 .phone_number("010-1234-5678")
                 .provider(Provider.Google)
                 .authentication(false)
-                .nickname("test2")
+                .nickname("test4")
                 .role(Role.USER)
                 .create_data(LocalDateTime.now())
                 .build();
 
         // when
-        us.join(user1);
+        Long user1_idx = us.join(user1);
+        System.out.println("user1_email = " + ur.findByIdx(user1_idx).getEmail());
         try {
-            us.join(user2);
+            Long user2_idx = us.join(user2);
+            System.out.println("user2_email = " + ur.findByIdx(user2_idx).getEmail());
         } catch (Exception e) {
             return;
         }
