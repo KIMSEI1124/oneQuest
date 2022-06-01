@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>Create Date : [2022 - 05 - 25]</p>
- * <p>Update Date : [2022 - 05 - 25]</p>
+ * <p>Update Date : [2022 - 06 - 01]</p>
  * <p>User as U</p>
  * <p>유저의 데이터를 담은 테이블</p>
  */
@@ -72,6 +72,10 @@ public class User {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(columnDefinition = "Long default 0")
+    private Long follower;
+    @Column(columnDefinition = "Long default 0")
+    private Long following;
 
     /**
      * <p>[Timestamp]</p>
@@ -108,5 +112,25 @@ public class User {
         this.nickname = nickname;
         this.role = role;
         this.create_data = create_data;
+    }
+
+    /* 비즈니스 로직 */
+
+    /**
+     * <p>[Create Date : 2022 - 06 - 01 ]</p>
+     * <p>[Update Date : 2022 - 06 - 01 ]</p>
+     * <p>팔로워 수를 1 늘린다.</p>
+     */
+    public void addFollower() {
+        this.follower += 1;
+    }
+
+    /**
+     * <p>[Create Date : 2022 - 06 - 01 ]</p>
+     * <p>[Update Date : 2022 - 06 - 01 ]</p>
+     * <p>팔로워 수를 1 줄인다.</p>
+     */
+    public void removeFollower() {
+        this.follower -= 1;
     }
 }
